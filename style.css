@@ -1,68 +1,285 @@
 * {
-    margin: 0;
-    padding: 0;
-    text-align: center;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--background);
+  color: var(--text-color);
+  transition: background 0.5s, color 0.5s;
+}
+
+:root {
+  --background: #f4f4f9;
+  --text-color: #333;
+  --highlight: #c3bef0;
+  --msg-background: rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="dark"] {
+  --background: #333;
+  --text-color: #f4f4f9;
+  --highlight: #fc5c7d;
+  --msg-background: rgba(255, 255, 255, 0.1);
+}
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: var(--highlight);
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+  font-size: 1.5rem;
+}
+
+#theme-toggle, #login {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.container {
+  display: flex;
+  flex: 1;
+  overflow-y: auto;
+  width: 100%;
+  padding: 1rem;
+}
+
+.game-container, .history-container {
+  flex: 1;
+  padding: 1rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 1rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+}
+
+.choice {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.choice:hover {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+img {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+}
+
+.choices {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin: 1.5rem 0;
+}
+
+.score-board {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+#user-score,
+#computer-score {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.msg-container {
+  margin-top: 2rem;
+}
+
+#msg {
+  background: var(--msg-background);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  transition: background-color 0.3s ease;
+}
+
+.history, .leaderboard, .achievements {
+  margin-top: 2rem;
+  text-align: left;
+  padding: 1rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow-y: auto;
+  max-height: 300px;
+}
+
+.history h2, .leaderboard h2, .achievements h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.history ul, .leaderboard ul, .achievements ul {
+  list-style: none;
+}
+
+.history li, .leaderboard li, .achievements li {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+
+.history li:hover, .leaderboard li:hover, .achievements li:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.tutorial {
+  display: none;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.tutorial h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.tutorial p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+#close-tutorial {
+  background: var(--highlight);
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  body {
+      flex-direction: column;
   }
-  
-  h1 {
-    background-color: #081b31;
-    color: #fff;
-    height: 5rem;
-    line-height: 5rem;
+
+  .container {
+      flex-direction: column;
+      padding: 0.5rem;
   }
-  
-  .choice {
-    height: 165px;
-    width: 165px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+  .game-container, .history-container {
+      width: 100%;
   }
-  
-  .choice:hover {
-    cursor: pointer;
-    background-color: #081b31;
-  }
-  
-  img {
-    height: 150px;
-    width: 150px;
-    object-fit: cover;
-    border-radius: 50%;
-  }
-  
-  .choices {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 3rem;
-    margin-top: 5rem;
-  }
-  
-  .score-board {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 3rem;
-    margin-top: 3rem;
-    gap: 5rem;
-  }
-  
-  #user-score,
-  #comp-score {
-    font-size: 3rem;
-  }
-  
-  .msg-container {
-    margin-top: 5rem;
-  }
-  
-  #msg {
-    background-color: #081b31;
-    color: #fff;
-    font-size: 2rem;
-    display: inline;
-    padding: 1rem;
-    border-radius: 1rem;
-  }
+}
+/* ... Existing styles ... */
+
+#countdown {
+  font-size: 3rem;
+  color: var(--highlight);
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.achievement-popup {
+  display: none;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.achievement-popup p {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.achievement-popup button {
+  background: var(--highlight);
+  border: none;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.score-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
+}
+
+.score-modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  position: relative;
+  max-width: 500px;
+  margin: auto;
+}
+
+.score-modal-content .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.score-modal-content textarea {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 1rem;
+}
