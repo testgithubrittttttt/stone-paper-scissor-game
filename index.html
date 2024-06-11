@@ -3,35 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="style.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#c3bef0">
 </head>
 <body>
-    <h1>ROCK PAPER SCISSOR</h1>
-    <div class="choices">
-        <div class="choice" id="rock">
-            <img src="rock.png">
+    <header>
+        <h1>Rock Paper Scissors</h1>
+        <button id="theme-toggle">🌙</button>
+        <button id="login">Login</button>
+    </header>
+    <div class="container">
+        <div class="game-container">
+            <div class="choices">
+                <div class="choice" id="rock">
+                    <img src="rock.png" alt="Rock">
+                </div>
+                <div class="choice" id="paper">
+                    <img src="paper.png" alt="Paper">
+                </div>
+                <div class="choice" id="scissors">
+                    <img src="scissors.png" alt="Scissors">
+                </div>
+            </div>
+            <div id="countdown"></div>
+            <div class="score-board">
+                <div class="score">
+                    <p id="user-score">0</p>
+                    <p>USER</p>
+                </div>
+                <div class="score">
+                    <p id="computer-score">0</p>
+                    <p>COMPUTER</p>
+                </div>
+            </div>
+            <div class="msg-container">
+                <p id="msg">Make your move!</p>
+            </div>
+            <button id="share-score">Share Score</button>
         </div>
-        <div class="choice" id="paper">
-            <img src="paper.png">
-        </div>
-        <div class="choice">
-            <img src="scissors.png" id="scissors">
+        <div class="history-container">
+            <div class="history">
+                <h2>Game History</h2>
+                <ul id="history-list"></ul>
+            </div>
+            <div class="leaderboard">
+                <h2>Leaderboard</h2>
+                <ul id="leaderboard-list"></ul>
+            </div>
+            <div class="achievements">
+                <h2>Achievements</h2>
+                <ul id="achievements-list"></ul>
+            </div>
         </div>
     </div>
-    <div class="score-board">
-        <div class="score">
-            <p id="user-score">0</p>
-            <p>USER</p>
-        </div>
-        <div class="score">
-            <p id="computer-score">0</p>
-            <p>COMPUTER</p>
+    <div class="tutorial">
+        <h2>How to Play</h2>
+        <p>Welcome to Rock Paper Scissors! Here’s how to play...</p>
+        <button id="close-tutorial">Close</button>
+    </div>
+    <div id="achievement-popup" class="achievement-popup">
+        <p id="achievement-msg">Achievement Unlocked!</p>
+        <button id="close-achievement">Close</button>
+    </div>
+    <div id="score-modal" class="score-modal">
+        <div class="score-modal-content">
+            <span id="close-score-modal" class="close">&times;</span>
+            <p>Share your score:</p>
+            <textarea id="score-text" readonly></textarea>
+            <button id="copy-score">Copy</button>
         </div>
     </div>
-    <div class="msg-container">
-        <p id="msg">play your move</p>
-    </div>
+    <audio id="click-sound" src="click.mp3"></audio>
+    <audio id="win-sound" src="win.mp3"></audio>
+    <audio id="lose-sound" src="lose.mp3"></audio>
+    <audio id="draw-sound" src="draw.mp3"></audio>
     <script src="script.js"></script>
 </body>
 </html>
